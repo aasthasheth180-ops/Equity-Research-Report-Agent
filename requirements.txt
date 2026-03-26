@@ -1,0 +1,15 @@
+langgraph
+langchain-core
+langchain-community
+openai
+pydantic
+tenacity
+rich
+faiss-cpu
+sentence-transformers
+yfinance
+pypdf
+pandas
+python-dotenv
+markdown
+requests

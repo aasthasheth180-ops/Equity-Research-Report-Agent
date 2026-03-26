@@ -1,0 +1,35 @@
+# ── Secrets (NEVER commit these) ─────────────────────────────────────────────
+.env
+
+# ── Generated report outputs ──────────────────────────────────────────────────
+data/**/*.md
+data/**/*.pdf
+data/**/*.csv
+
+# Keep the folder structure in git
+!data/.gitkeep
+!data/gs_filings/.gitkeep
+
+# ── Python cache ──────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+
+# ── Jupyter ───────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ── ML model cache (sentence-transformers downloads here) ─────────────────────
+.cache/
+models/
+~/.cache/huggingface/
+
+# ── Virtual environments ──────────────────────────────────────────────────────
+venv/
+.venv/
+env/
+
+# ── OS clutter ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini

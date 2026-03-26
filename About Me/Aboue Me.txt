@@ -1,0 +1,4 @@
+1) I am a quant with good knowledge of python and finance
+2) I am need help with grasping the AI concepts
+3) I prefer to make minimal changes to my code.
+4) I prefer to avoid excess production checks like try and catch. 
