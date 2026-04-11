@@ -77,6 +77,10 @@ def run_dcf(
     shares_b          = (info.get("sharesOutstanding")     or 1) / 1e9   # billions
     current_price     = info.get("currentPrice", 0)
 
+    # Override ROE default with live value if not explicitly passed in
+    if roe is None:
+        roe_ = info.get("returnOnEquity") or DEFAULTS["roe"]
+
     # ── Base year CET1 capital ────────────────────────────────────────────────
     cet1_prev = total_assets_0 * rwa * ce1i
 

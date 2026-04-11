@@ -1,0 +1,15 @@
+\usepackage{titlesec}
+\usepackage{xcolor}
+
+% Section (##) — dark navy, rule underneath
+\definecolor{navyblue}{RGB}{0, 32, 96}
+\titleformat{\section}
+  {\Large\bfseries\color{navyblue}}
+  {}{0em}{}
+  [\vspace{-0.5em}\textcolor{navyblue}{\titlerule[1pt]}\vspace{0.3em}]
+
+% Subsection (###) — slightly smaller, dark grey
+\definecolor{darkgrey}{RGB}{64, 64, 64}
+\titleformat{\subsection}
+  {\large\bfseries\color{darkgrey}}
+  {}{0em}{}
