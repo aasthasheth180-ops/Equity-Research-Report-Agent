@@ -2,9 +2,9 @@
 .env
 
 # ── Generated report outputs ──────────────────────────────────────────────────
-data/**/*.md
-data/**/*.pdf
-data/**/*.csv
+
+
+
 
 # Keep the folder structure in git
 !data/.gitkeep
@@ -28,6 +28,8 @@ models/
 venv/
 .venv/
 env/
+.env
+*.env
 
 # ── OS clutter ────────────────────────────────────────────────────────────────
 .DS_Store
