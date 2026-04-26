@@ -18,14 +18,14 @@ from pydantic import BaseModel, Field
 from tenacity import retry, stop_after_attempt, wait_exponential
 
 from rag_store import rag_store
-from tools_dcf import run_dcf
+from tools_dcf import run_dcf, get_balance_sheet_projections, get_income_statement_projections
 import llm_engine
 
 
 # ── Pydantic models (same pattern as Week7) ───────────────────────────────────
 
 class ToolCall(BaseModel):
-    name: Literal["retrieve_context", "fetch_financials", "fetch_market_risk_data", "run_dcf_valuation"]
+    name: Literal["retrieve_context", "fetch_financials", "fetch_market_risk_data", "run_dcf_valuation", "get_balance_sheet_projections", "get_income_statement_projections"]
     arguments: Dict[str, Any] = Field(default_factory=dict)
 
 
@@ -84,10 +84,12 @@ def _fetch_market_risk_data(ticker: str, date: str, csv_folder: str) -> str:
 
 
 _TOOLS = {
-    "retrieve_context":       _retrieve_context,
-    "fetch_financials":       _fetch_financials,
-    "fetch_market_risk_data": _fetch_market_risk_data,
-    "run_dcf_valuation":      run_dcf,
+    "retrieve_context":               _retrieve_context,
+    "fetch_financials":               _fetch_financials,
+    "fetch_market_risk_data":         _fetch_market_risk_data,
+    "run_dcf_valuation":              run_dcf,
+    "get_balance_sheet_projections":  get_balance_sheet_projections,
+    "get_income_statement_projections": get_income_statement_projections,
 }
 
 
@@ -130,6 +132,18 @@ TOOL_SCHEMAS = json.dumps({
     },
     "run_dcf_valuation": {
         "description": "Run a bank FCFE DCF model. Returns intrinsic price target, upside %, FCFE projections, and key assumptions. Use this for the valuation section.",
+        "arguments": {
+            "ticker": "string — e.g. 'GS'",
+        }
+    },
+    "get_balance_sheet_projections": {
+        "description": "Returns the current annual balance sheet and 3-year forward projections (total assets, loans, deposits, equity). Use for financial_performance and valuation sections.",
+        "arguments": {
+            "ticker": "string — e.g. 'GS'",
+        }
+    },
+    "get_income_statement_projections": {
+        "description": "Returns the current annual income statement and 3-year forward projections (revenue, expenses, net income, EPS). Use for financial_performance and investment_thesis sections.",
         "arguments": {
             "ticker": "string — e.g. 'GS'",
         }
