@@ -1,7 +1,7 @@
 # Autonomous Equity Research Agent: Architecture and Methodology
 
 **Course:** Large Language Models — Spring 2026
-**Author:** Manoj Kumar Matala
+**Author:** Manoj Kumar Matala, Satish
 **Date:** April 2026
 
 ---
